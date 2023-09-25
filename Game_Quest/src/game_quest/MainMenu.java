@@ -7,6 +7,7 @@ package game_quest;
 import Controller.KnightsTourProblemController;
 import Model.KnightsTourProblemModel;
 import View.KnightsTourProblemUI;
+import View.TicTacToeView;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -81,7 +82,6 @@ public class MainMenu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1920, 1080));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1920, 1080));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_close.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -92,6 +92,12 @@ public class MainMenu extends javax.swing.JFrame {
         });
         getContentPane().add(lbl_close, new org.netbeans.lib.awtextra.AbsoluteConstraints(1830, 30, -1, -1));
         getContentPane().add(lbl_shotest, new org.netbeans.lib.awtextra.AbsoluteConstraints(1063, 760, -1, -1));
+
+        lbl_ticTac.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_ticTacMouseClicked(evt);
+            }
+        });
         getContentPane().add(lbl_ticTac, new org.netbeans.lib.awtextra.AbsoluteConstraints(1063, 630, -1, -1));
         getContentPane().add(lbl_eightQueen, new org.netbeans.lib.awtextra.AbsoluteConstraints(1063, 500, -1, -1));
         getContentPane().add(lbl_shortestPath, new org.netbeans.lib.awtextra.AbsoluteConstraints(1063, 370, -1, -1));
@@ -126,6 +132,14 @@ public class MainMenu extends javax.swing.JFrame {
     private void lbl_closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_closeMouseClicked
         System.exit(0);
     }//GEN-LAST:event_lbl_closeMouseClicked
+
+    private void lbl_ticTacMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_ticTacMouseClicked
+        // TODO add your handling code here:
+        TicTacToeView ticView = new TicTacToeView();
+        ticView.setVisible(true);
+        
+        this.setVisible(false);
+    }//GEN-LAST:event_lbl_ticTacMouseClicked
 
     /**
      * @param args the command line arguments

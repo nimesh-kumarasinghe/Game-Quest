@@ -25,4 +25,16 @@ public class CustomFonts {
         }
         return new Font("Arial", Font.PLAIN, 16);
     }
+public Font Woodlook(float font_size){
+        try{
+            InputStream fontStream = getClass().getResourceAsStream("Woodlook-nvyP.ttf");
+            //InputStream fontStream = getClass().getResourceAsStream("Driftwood.ttf");
+            Font customFont = Font.createFont(Font.TRUETYPE_FONT, fontStream).deriveFont(font_size);
+            return customFont;
+        }
+        catch(IOException | FontFormatException e){
+            e.printStackTrace();
+        }
+        return new Font("Arial", Font.PLAIN, 16);
+    }
 }

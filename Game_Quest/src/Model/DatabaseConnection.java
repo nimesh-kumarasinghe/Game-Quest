@@ -14,7 +14,7 @@ import java.sql.SQLException;
  */
 public class DatabaseConnection {
     private static Connection connection;
-    private static final String URL = "jdbc:mysql://localhost:3306/puzzel-game";
+    private static final String URL = "jdbc:mysql://localhost:3306/game_quest";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "";
 

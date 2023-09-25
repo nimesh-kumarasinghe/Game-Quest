@@ -4,9 +4,6 @@
  */
 package game_quest;
 
-import Controller.KnightsTourProblemController;
-import Model.KnightsTourProblemModel;
-import View.KnightsTourProblemUI;
 
 /**
  *
@@ -18,9 +15,6 @@ public class Game_Quest {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        KnightsTourProblemController controller = new KnightsTourProblemController(8); // Initialize with the desired chessboard size
-        KnightsTourProblemUI view = new KnightsTourProblemUI(controller);
-        KnightsTourProblemModel model = new KnightsTourProblemModel(controller, view);
         MainMenu menu = new MainMenu();
         
         menu.setVisible(true);
