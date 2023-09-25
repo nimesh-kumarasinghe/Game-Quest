@@ -15,8 +15,7 @@ import javax.swing.JOptionPane;
  *
  * @author Lakshan
  */
-public class TicTacToeModel {
-    
+public class TicTacToeModel {    
     Connection con = null;
     PreparedStatement pst = null;
     
@@ -31,10 +30,14 @@ public class TicTacToeModel {
             pst.setString(1, playerName);
             pst.setString(2, correctResponse);
             pst.executeUpdate();
-        } catch (SQLException e) {
+        }
+        catch (SQLException e) {
             e.printStackTrace();
-            // Handle any database errors here
-        } finally {
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
             try {
                 if (pst != null) {
                     pst.close();

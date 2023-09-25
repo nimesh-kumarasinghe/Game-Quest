@@ -201,17 +201,15 @@ public class TicTacToeController {
                     }
                 }
             }
-        }
-        
+        }        
         board[AIMoveRow][AIMoveCol] = aiPlayer;
     }
             
-    public int getComputerMoveRow() {
+    public int getAiMoveRow() {
         return AIMoveRow;
     }
     
-    public int getComputerMoveCol() {
+    public int getAiMoveCol() {
         return AIMoveCol;
     }
-    
 }

@@ -9,16 +9,19 @@ package View;
  * @author Lakshan
  */
 
-import Controller.TicTacToeController;
-import Model.TicTacToeModel;
 import javax.swing.*;
 import javax.swing.BorderFactory;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.plaf.basic.BasicButtonUI;
+
+import Controller.TicTacToeController;
+import Model.TicTacToeModel;
 import CustomFonts.CustomFonts;
-import game_quest.MainMenu;
-        
+import game_quest.MainMenu;       
 
 public class TicTacToeView extends javax.swing.JFrame implements ActionListener {
     
@@ -32,7 +35,7 @@ public class TicTacToeView extends javax.swing.JFrame implements ActionListener 
      * Creates new form TicTacToeView
      */
     
-    private JPanel chessboardPanel;
+    private JPanel boardPanel;
     private JButton[][] buttons;
     private TicTacToeController game;
     private TicTacToeModel model;
@@ -44,28 +47,48 @@ public class TicTacToeView extends javax.swing.JFrame implements ActionListener 
         model = new TicTacToeModel();
         game=new TicTacToeController();        
         setTitle("Tic Tac Toe");
-        chessboardPanel = new JPanel(new GridLayout(boardSize, boardSize));
+        boardPanel = new JPanel(new GridLayout(boardSize, boardSize));
         buttons = new JButton[boardSize][boardSize];
        
         for (int i = 0; i < boardSize; i++) {
             for (int j = 0; j < boardSize; j++) {
                 buttons[i][j] = new JButton();
-                buttons[i][j].setBackground(Color.WHITE); // Set background color
-                buttons[i][j].setBackground(Color.decode("#BE8452"));//864D27 BE8452 985f36
+                //buttons[i][j].setBackground(Color.WHITE); 
+                buttons[i][j].setBackground(Color.decode("#BE8452"));  //Colors 864D27 BE8452 985f36 
+                buttons[i][j].setFocusPainted(false); // Remove button border
+                buttons[i][j].setBorder(BorderFactory.createCompoundBorder(
+                        BorderFactory.createLineBorder(Color.decode("#78401E"), 2), // Border
+                        BorderFactory.createEmptyBorder(20, 20, 20, 20) // Padding 
+                ));
+                //buttons[i][j].setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add padding
+                //buttons[i][j].setBorder(BorderFactory.createLineBorder(Color.decode("#78401E"), 2));
                 buttons[i][j].setFont(cus_font.Woodlook(80));
                 buttons[i][j].setForeground(Color.decode("#603114"));
-                buttons[i][j].setFocusPainted(false); // Remove button border
-                //buttons[i][j].setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add padding
-                buttons[i][j].setBorder(BorderFactory.createLineBorder(Color.decode("#78401E"), 2));
-                chessboardPanel.add(buttons[i][j]);
-                buttons[i][j].addActionListener(this);
                 
+                // Add a MouseListener to change the color on hover
+                buttons[i][j].addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseEntered(MouseEvent e) {
+                        ((JButton) e.getSource()).setBackground(Color.decode("#985F36")); // Set hover color
+                    }
+
+                    @Override
+                    public void mouseExited(MouseEvent e) {
+                        ((JButton) e.getSource()).setBackground(Color.decode("#BE8452")); // Set default color
+                    }
+                });
+                
+                // Add a custom UI for the button to change the clicked color
+                buttons[i][j].setUI(new CustomButtonUI());
+                
+                boardPanel.add(buttons[i][j]);
+                buttons[i][j].addActionListener(this);                
             }
         }
         board_panel.setLayout(new BorderLayout());
-        board_panel.add(chessboardPanel, BorderLayout.CENTER);
+        board_panel.add(boardPanel, BorderLayout.CENTER);
         setVisible(true);
-        playerName();
+        getPlayerName();
     }
 
     /**
@@ -91,6 +114,7 @@ public class TicTacToeView extends javax.swing.JFrame implements ActionListener 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         board_panel.setBackground(new java.awt.Color(120, 64, 30));
+        board_panel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(120, 64, 30), 3, true));
         board_panel.setMinimumSize(new java.awt.Dimension(500, 500));
         board_panel.setPreferredSize(new java.awt.Dimension(400, 400));
         board_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -156,31 +180,34 @@ public class TicTacToeView extends javax.swing.JFrame implements ActionListener 
     
     @Override
     public void actionPerformed(ActionEvent e){
-    
-     JButton button = (JButton) e.getSource();
-     for (int i = 0; i < boardSize; i++) {
+        
+        JButton button = (JButton) e.getSource();
+        for (int i = 0; i < boardSize; i++) {
             for (int j = 0; j < boardSize; j++) {
-     if (button == buttons[i][j] && game.isMoveValid(i, j) && !game.isGameOver()) {
+                if (button == buttons[i][j] && game.isMoveValid(i, j) && !game.isGameOver()) {
                     game.makeMove(i, j, humanPlayer);
                     button.setText(Character.toString(humanPlayer));
                     
                     if (!game.isGameOver()) {
                         game.makeAIMove();
-                        int computerRow = game.getComputerMoveRow();
-                        int computerCol = game.getComputerMoveCol();
+                        int computerRow = game.getAiMoveRow();
+                        int computerCol = game.getAiMoveCol();
                         buttons[computerRow][computerCol].setText(Character.toString(aiPlayer));
                     }
 
                     if (game.isGameOver()) {
                         if (game.checkForWin(humanPlayer)) {
+                            // If user WINS answer and player name send to DB
                             game.printBoard(); //if win send this to db
+                            String matrixAnswer = game.getMatrixAnswer();
+                            System.out.println(matrixAnswer);
+                            model.savePlayerResponse(playerName, matrixAnswer);
                             JOptionPane.showMessageDialog(this, "You've won the game.","Congratulations!",JOptionPane.INFORMATION_MESSAGE);
                         } 
                         else if (game.checkForWin(aiPlayer)) {
                             String matrixAnswer = game.getMatrixAnswer();
                             System.out.println(matrixAnswer);
                             JOptionPane.showMessageDialog(this, "Better luck next time.","You lost!",JOptionPane.ERROR_MESSAGE);
-                            //String playerName = JOptionPane.showInputDialog(this, "Enter your name:");
                             model.savePlayerResponse(playerName, matrixAnswer);
                         } 
                         else {
@@ -189,10 +216,18 @@ public class TicTacToeView extends javax.swing.JFrame implements ActionListener 
                         resetBoard();
                     }
                 }
-            }
-        
-     }
+            }        
+        }
+    }
     
+    // CustomButtonUI class to customize the button's UI
+    private class CustomButtonUI extends BasicButtonUI {
+        @Override
+        protected void paintButtonPressed(Graphics g, AbstractButton b) {
+            // Customize the color when the button is clicked
+            g.setColor(Color.decode("#864D27"));
+            g.fillRect(0, 0, b.getWidth(), b.getHeight());
+        }
     }
     
     public void resetBoard() {
@@ -200,50 +235,12 @@ public class TicTacToeView extends javax.swing.JFrame implements ActionListener 
         for (int i = 0; i < boardSize; i++) {
             for (int j = 0; j < boardSize; j++) {
                 buttons[i][j].setText("");
-                buttons[i][j].setEnabled(true); // Re-enable buttons
+                buttons[i][j].setEnabled(true);
             }
         }
     }
-    
-    /*public void getPlayerName() {
-        while (true) {
-            JTextField nameField = new JTextField();
-            JComponent[] inputs = new JComponent[]{
-                new JLabel("Enter your name:"),
-                nameField
-            };
-
-            int result = JOptionPane.showOptionDialog( null, inputs, "Player Name",
-                JOptionPane.OK_CANCEL_OPTION,
-                JOptionPane.QUESTION_MESSAGE,
-                null,
-                new String[]{"Start", "Exit"}, // Button labels
-                "Start" // Default button
-            );
-            result.setInitialValue(null);
-
-            if (result == JOptionPane.OK_OPTION) {
-                playerName = nameField.getText();
-                if (playerName.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Name should be entered to start!", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-                else if (!playerName.matches("^[a-zA-Z ]+$")) {
-                    JOptionPane.showMessageDialog(null, "Name should contain only alphabet characters!", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-                else {
-                    lbl_playerName.setFont(cus_font.komikz(20));
-                    lbl_playerName.setText("Player Name: " + playerName);
-                    //System.out.println("Player Name: " + playerName);
-                    break; 
-                }
-            } else {
-                System.out.println("User canceled the input.");
-                System.exit(0); 
-            }
-        }
-    }*/
-    
-    private void playerName() {
+        
+    private void getPlayerName() {
         while (true) {
             JTextField nameField = new JTextField();
             JComponent[] inputs = new JComponent[]{new JLabel("Enter your name:"), nameField};
