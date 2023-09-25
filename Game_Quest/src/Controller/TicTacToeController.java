@@ -63,12 +63,12 @@ public class TicTacToeController {
 
         for (int i = 0; i < boardSize; i++) {
             for (int j = 0; j < boardSize; j++) {
-                answerBuilder.append(board[i][j]);
+                answerBuilder.append(board[i][j]+ "\t");
             }
 
             // Add a comma after each row except the last one
             if (i < boardSize - 1) {
-                answerBuilder.append(",");
+                answerBuilder.append("\n");
             }
         }
 

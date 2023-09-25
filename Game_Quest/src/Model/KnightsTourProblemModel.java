@@ -39,7 +39,7 @@ public class KnightsTourProblemModel {
         try {
                 Connection connection = dbConnection.getConnection(); // Get the database connection
 
-                String sql = "INSERT INTO knight_tour (player_name, moves) VALUES (?, ?)";
+                String sql = "INSERT INTO knights_tour (player_Name, correct_Answer) VALUES (?, ?)";
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
                 preparedStatement.setString(1, playerName);
 

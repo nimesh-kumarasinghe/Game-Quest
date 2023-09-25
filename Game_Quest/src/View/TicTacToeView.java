@@ -43,7 +43,6 @@ public class TicTacToeView extends javax.swing.JFrame implements ActionListener 
         setLocationRelativeTo(null);
         model = new TicTacToeModel();
         game=new TicTacToeController();        
-        playerName();
         setTitle("Tic Tac Toe");
         chessboardPanel = new JPanel(new GridLayout(boardSize, boardSize));
         buttons = new JButton[boardSize][boardSize];
@@ -56,8 +55,8 @@ public class TicTacToeView extends javax.swing.JFrame implements ActionListener 
                 buttons[i][j].setFont(cus_font.Woodlook(80));
                 buttons[i][j].setForeground(Color.decode("#603114"));
                 buttons[i][j].setFocusPainted(false); // Remove button border
-                buttons[i][j].setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add padding
-                //buttons[i][j].setBorder(BorderFactory.createLineBorder(Color.decode("#78401E"), 2));
+                //buttons[i][j].setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add padding
+                buttons[i][j].setBorder(BorderFactory.createLineBorder(Color.decode("#78401E"), 2));
                 chessboardPanel.add(buttons[i][j]);
                 buttons[i][j].addActionListener(this);
                 
@@ -66,6 +65,7 @@ public class TicTacToeView extends javax.swing.JFrame implements ActionListener 
         board_panel.setLayout(new BorderLayout());
         board_panel.add(chessboardPanel, BorderLayout.CENTER);
         setVisible(true);
+        playerName();
     }
 
     /**
@@ -93,25 +93,13 @@ public class TicTacToeView extends javax.swing.JFrame implements ActionListener 
         board_panel.setBackground(new java.awt.Color(120, 64, 30));
         board_panel.setMinimumSize(new java.awt.Dimension(500, 500));
         board_panel.setPreferredSize(new java.awt.Dimension(400, 400));
-
-        javax.swing.GroupLayout board_panelLayout = new javax.swing.GroupLayout(board_panel);
-        board_panel.setLayout(board_panelLayout);
-        board_panelLayout.setHorizontalGroup(
-            board_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
-        );
-        board_panelLayout.setVerticalGroup(
-            board_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
-        );
-
+        board_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(board_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, -1, -1));
-
-        lbl_playerName.setText("jLabel1");
         getContentPane().add(lbl_playerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, 260, -1));
 
         reset_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/tictactoe_reset_btn.png"))); // NOI18N
         reset_btn.setText("jLabel1");
+        reset_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         reset_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 reset_btnMouseClicked(evt);
@@ -121,6 +109,7 @@ public class TicTacToeView extends javax.swing.JFrame implements ActionListener 
 
         home_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/tictactoe_home_btn.png"))); // NOI18N
         home_btn.setText("jLabel1");
+        home_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         home_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 home_btnMouseClicked(evt);
@@ -130,6 +119,7 @@ public class TicTacToeView extends javax.swing.JFrame implements ActionListener 
 
         close_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/tictactoe_close_btn.png"))); // NOI18N
         close_btn.setText("jLabel1");
+        close_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         close_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 close_btnMouseClicked(evt);

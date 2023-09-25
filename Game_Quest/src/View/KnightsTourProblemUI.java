@@ -86,6 +86,7 @@ public class KnightsTourProblemUI extends javax.swing.JFrame {
         initializeView();
         
         
+        
         for (int i = 0; i < controller.getSize(); i++) {
             for (int j = 0; j < controller.getSize(); j++) {
                 addSquareButtonListener(new SquareButtonListener(i, j), i, j);
@@ -117,6 +118,8 @@ public class KnightsTourProblemUI extends javax.swing.JFrame {
 
         panel_chessBoard.setLayout(new BorderLayout());
         panel_chessBoard.add(chessboardPanel, BorderLayout.CENTER);
+        setVisible(true);
+        inputName();
     }
     
     public void updateView() {    
@@ -182,7 +185,7 @@ public class KnightsTourProblemUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Invalid move. Try again!", "Warning", JOptionPane.WARNING_MESSAGE);
             }
             if(controller.hasNoEmptyMoveSquares(x, y) && controller.getMoveCount() != 64){
-                    JOptionPane.showMessageDialog(null, "Game Over!", "Game Over", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Better luck next time.", "Game Over", JOptionPane.ERROR_MESSAGE);
                     controller.reset();
                     resetChessboard();
                     lbl_moveCount.setText("0");
@@ -225,7 +228,7 @@ public class KnightsTourProblemUI extends javax.swing.JFrame {
      
     public void resetChessboard() {
         clearChessboard(); 
-        inputName();
+        //inputName();
     }
     
     public void inputName(){
