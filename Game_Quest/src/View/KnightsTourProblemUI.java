@@ -178,6 +178,7 @@ public class KnightsTourProblemUI extends javax.swing.JFrame {
                     model.saveUserData(playerName,controller.getMetrixAnswer());
                     controller.reset();
                     resetChessboard();
+                    inputName();
                     lbl_moveCount.setText("0");
                 }
                     
