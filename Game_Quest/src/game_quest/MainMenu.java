@@ -13,7 +13,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-
+import View.IdentifyShortestPathView;
 /**
  *
  * @author ndila
@@ -162,6 +162,9 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void lbl_shotestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_shotestMouseClicked
         // TODO add your handling code here:
+        IdentifyShortestPathView shortest_path = new IdentifyShortestPathView();
+        shortest_path.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_lbl_shotestMouseClicked
 
     private void lbl_eightQueenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_eightQueenMouseClicked
