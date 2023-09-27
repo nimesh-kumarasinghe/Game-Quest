@@ -140,8 +140,8 @@ public class EightQueenPuzzleView extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        panel_chessboard = new javax.swing.JPanel();
         lbl_background = new javax.swing.JLabel();
+        panel_chessboard = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         lbl_plyerName = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -165,12 +165,14 @@ public class EightQueenPuzzleView extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(0, 0, 0));
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setMinimumSize(new java.awt.Dimension(1920, 1080));
         setUndecorated(true);
         setSize(new java.awt.Dimension(1920, 1080));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(lbl_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 790, 1040));
+        lbl_background.getAccessibleContext().setAccessibleName("lbl_Score");
 
         panel_chessboard.setBackground(new java.awt.Color(204, 102, 0));
         panel_chessboard.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(255, 153, 51), null, null));
@@ -188,19 +190,17 @@ public class EightQueenPuzzleView extends javax.swing.JFrame {
             .addGap(0, 656, Short.MAX_VALUE)
         );
 
-        getContentPane().add(panel_chessboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 630, 660));
-        getContentPane().add(lbl_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -130, 790, 1040));
-        lbl_background.getAccessibleContext().setAccessibleName("lbl_Score");
+        getContentPane().add(panel_chessboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 630, 660));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
         lbl_plyerName.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
-        lbl_plyerName.setText("jLabel3");
+        lbl_plyerName.setText("Player Name");
         lbl_plyerName.setToolTipText("");
 
         jLabel2.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
-        jLabel2.setText("jLabel2");
+        jLabel2.setText("Score");
 
         lbl_reset.setBackground(new java.awt.Color(255, 102, 0));
         lbl_reset.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
@@ -231,30 +231,29 @@ public class EightQueenPuzzleView extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(216, 216, 216)
-                .addComponent(lbl_profile, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(121, Short.MAX_VALUE)
+                .addContainerGap(286, Short.MAX_VALUE)
                 .addComponent(lbl_resetIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
-                        .addComponent(lbl_plyerName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbl_plyerName, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(lbl_reset, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
                         .addComponent(lbl_homeIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_home, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(35, 35, 35))
+                        .addComponent(btn_home, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(lbl_profile, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(110, 110, 110))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(177, 177, 177)
+                .addGap(269, 269, 269)
                 .addComponent(lbl_profile, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_plyerName, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -271,10 +270,10 @@ public class EightQueenPuzzleView extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(btn_home, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(267, Short.MAX_VALUE))
+                .addContainerGap(485, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, -70, 620, 840));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, -70, 860, 1150));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
