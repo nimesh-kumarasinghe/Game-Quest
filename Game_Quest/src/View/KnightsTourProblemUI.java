@@ -129,7 +129,6 @@ public class KnightsTourProblemUI extends javax.swing.JFrame {
                 squareButtons[i][j].setIcon(null); // Clear any previous icon
             }
         }
-        System.out.println("Size: "+controller.getSize());
 
         // Set the knight image icon on the selected square
         int moveCount = controller.getMoveCount();

@@ -156,7 +156,6 @@ public class KnightsTourProblemController {
         moveSquare[x][y] = moveCount + 1; // Store the move count in the matrix
         moveCount++;
         solution.add(new Point(x, y));
-        System.out.println("SolutionMy: "+solution);
         
         // Mark the current square as visited
         visitedSquares.add(new Point(x, y));
@@ -191,7 +190,6 @@ public class KnightsTourProblemController {
             int nextY = y + moveY[i];
 
             if (isValidMove(nextX, nextY) && board[nextX][nextY] == 0 && !visitedSquares.contains(new Point(nextX, nextY))) {
-                System.out.println("Have");
                 return false; // at least one empty square to move
             }
         }
