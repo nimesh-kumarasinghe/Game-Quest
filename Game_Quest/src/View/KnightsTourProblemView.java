@@ -11,7 +11,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import javax.imageio.ImageIO;
@@ -44,7 +43,7 @@ public class KnightsTourProblemView extends javax.swing.JFrame {
     public KnightsTourProblemView(KnightsTourProblemController controller) {
         initComponents();
         this.controller = controller;
-        this.model = new KnightsTourProblemModel(controller, this);
+        this.model = new KnightsTourProblemModel();
         this.chessboardPanel = new JPanel(new GridLayout(controller.getSize(), controller.getSize()));
         this.squareButtons = new JButton[controller.getSize()][controller.getSize()];  
  
