@@ -10,7 +10,7 @@ package Model;
  */
 
 import Controller.KnightsTourProblemController;
-import View.KnightsTourProblemUI;
+import View.KnightsTourProblemView;
 import Model.DatabaseConnection;
 //import com.fasterxml.jackson.core.JsonProcessingException;
 import java.awt.event.ActionEvent;
@@ -26,10 +26,10 @@ import java.util.logging.Logger;
 
 public class KnightsTourProblemModel {
     private KnightsTourProblemController controller;
-    private KnightsTourProblemUI view;
+    private KnightsTourProblemView view;
     private DatabaseConnection dbConnection;
 
-    public KnightsTourProblemModel(KnightsTourProblemController controller, KnightsTourProblemUI view) {
+    public KnightsTourProblemModel(KnightsTourProblemController controller, KnightsTourProblemView view) {
         this.controller = controller;
         this.view = view;
         this.dbConnection = dbConnection;
