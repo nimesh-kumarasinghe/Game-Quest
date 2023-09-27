@@ -234,6 +234,9 @@ public class IdentifyShortestPathView extends javax.swing.JFrame {
         btn_start_play.setToolTipText("");
         btn_start_play.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_start_play.setBorderPainted(false);
+        btn_start_play.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_start_play.setFocusPainted(false);
+        btn_start_play.setFocusable(false);
         btn_start_play.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_start_playActionPerformed(evt);
@@ -299,6 +302,9 @@ public class IdentifyShortestPathView extends javax.swing.JFrame {
         btn_check.setToolTipText("");
         btn_check.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_check.setBorderPainted(false);
+        btn_check.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_check.setFocusPainted(false);
+        btn_check.setFocusable(false);
         btn_check.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_checkActionPerformed(evt);
@@ -367,6 +373,7 @@ public class IdentifyShortestPathView extends javax.swing.JFrame {
         jPanel1.add(fromto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imgs/cities/close-button-png-30225.png"))); // NOI18N
+        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel7MouseClicked(evt);
