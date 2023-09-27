@@ -68,10 +68,11 @@ public class LCSView extends javax.swing.JFrame {
     }
     
     public void showPlayer(){
-        do{ playerName = JOptionPane.showInputDialog(this,"Enter Player's Name:");
+        do{ 
+           playerName = JOptionPane.showInputDialog(this,"Enter Player's Name:");
            if(playerName == null || playerName.isEmpty()){
-                   showMessage("Player name can't be empty. Please enter a valid name.");
-                   
+                   JOptionPane.showMessageDialog(this,"Player name can't be empty. Please enter a valid name.","Error", JOptionPane.ERROR_MESSAGE);
+    
            }
            else{
                    showMessage("Player Name: "+playerName);
@@ -187,7 +188,7 @@ public class LCSView extends javax.swing.JFrame {
         String correctAnswer  = controller.calculateLCS(x, y);
         
         if(!userAnswer.equals(userAnswer.toUpperCase())){
-            showMessage("Answer must be in capital letters only.");
+            JOptionPane.showMessageDialog(this,"Answer must be in capital letters only.","Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
