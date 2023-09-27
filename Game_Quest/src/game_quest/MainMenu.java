@@ -4,8 +4,12 @@
  */
 package game_quest;
 
+import Controller.EightQueenPuzzleController;
+import static Controller.EightQueenPuzzleController.getPlayerNameDialog;
 import Controller.KnightsTourProblemController;
+import Model.EightQueenPuzzleModel;
 import Model.KnightsTourProblemModel;
+import View.EightQueenPuzzleView;
 import View.KnightsTourProblemUI;
 import View.TicTacToeView;
 import java.awt.Image;
@@ -14,6 +18,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import View.IdentifyShortestPathView;
+import javax.swing.SwingUtilities;
 /**
  *
  * @author ndila
@@ -168,8 +173,20 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_lbl_shotestMouseClicked
 
     private void lbl_eightQueenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_eightQueenMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lbl_eightQueenMouseClicked
+       EightQueenPuzzleView view = new EightQueenPuzzleView(8);
+       view.setVisible(true);
+            SwingUtilities.invokeLater(() -> {
+            String playerName = getPlayerNameDialog(); 
+            if (playerName != null && !playerName.isEmpty()) {
+               EightQueenPuzzleModel model = new EightQueenPuzzleModel(8);
+               EightQueenPuzzleController controller = new EightQueenPuzzleController(model, view, playerName);
+               view.setPlayerNameLabel(playerName);
+            } else {
+                System.out.println("Player's name not provided. Exiting the game.");
+            }
+        });
+               
+             }//GEN-LAST:event_lbl_eightQueenMouseClicked
 
     private void lbl_longestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_longestMouseClicked
         // TODO add your handling code here:
