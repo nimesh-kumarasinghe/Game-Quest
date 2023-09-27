@@ -10,7 +10,7 @@ import Controller.KnightsTourProblemController;
 import Model.EightQueenPuzzleModel;
 import Model.KnightsTourProblemModel;
 import View.EightQueenPuzzleView;
-import View.KnightsTourProblemUI;
+import View.KnightsTourProblemView;
 import View.TicTacToeView;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -148,7 +148,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void lbl_knightTourMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_knightTourMouseClicked
         KnightsTourProblemController controller = new KnightsTourProblemController(8); // Initialize with the desired chessboard size
-        KnightsTourProblemUI view = new KnightsTourProblemUI(controller);
+        KnightsTourProblemView view = new KnightsTourProblemView(controller);
         view.setVisible(true);
         this.setVisible(false);
         controller.getMetrixAnswer();

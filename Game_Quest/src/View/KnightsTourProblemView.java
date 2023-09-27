@@ -22,10 +22,10 @@ import game_quest.MainMenu;
  *
  * @author ndila
  */
-public class KnightsTourProblemUI extends javax.swing.JFrame {
+public class KnightsTourProblemView extends javax.swing.JFrame {
 
     /**
-     * Creates new form KnightsTourProblemUI
+     * Creates new form KnightsTourProblemView
      */
     
     private KnightsTourProblemController controller;
@@ -41,7 +41,7 @@ public class KnightsTourProblemUI extends javax.swing.JFrame {
     private ImageIcon boardFrameImage;
     public CustomFonts cus_font = new CustomFonts();
     
-    public KnightsTourProblemUI(KnightsTourProblemController controller) {
+    public KnightsTourProblemView(KnightsTourProblemController controller) {
         initComponents();
         this.controller = controller;
         this.model = new KnightsTourProblemModel(controller, this);
@@ -439,13 +439,13 @@ public class KnightsTourProblemUI extends javax.swing.JFrame {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(KnightsTourProblemUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(KnightsTourProblemView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(KnightsTourProblemUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(KnightsTourProblemView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(KnightsTourProblemUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(KnightsTourProblemView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(KnightsTourProblemUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(KnightsTourProblemView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
 //        //</editor-fold>
@@ -453,7 +453,7 @@ public class KnightsTourProblemUI extends javax.swing.JFrame {
 //        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                new KnightsTourProblemUI().setVisible(true);
+//                new KnightsTourProblemView().setVisible(true);
 //            }
 //        });
 //    }
