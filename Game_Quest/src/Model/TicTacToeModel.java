@@ -25,7 +25,7 @@ public class TicTacToeModel {
     
     public void savePlayerResponse(String playerName, String correctResponse) {
         try {
-            String sql = "INSERT INTO tictactoe (player_name, correct_answer) VALUES (?, ?)";
+            String sql = "INSERT INTO tic_tac_toe (player_name, correct_answer) VALUES (?, ?)";
             pst = con.prepareStatement(sql);
             pst.setString(1, playerName);
             pst.setString(2, correctResponse);
