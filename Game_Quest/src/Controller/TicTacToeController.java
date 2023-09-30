@@ -58,6 +58,10 @@ public class TicTacToeController {
         }
     }
     
+    public char[][] getBoards() {
+        return board;
+    }
+    
     public String getMatrixAnswer() {
         StringBuilder answerBuilder = new StringBuilder();
 

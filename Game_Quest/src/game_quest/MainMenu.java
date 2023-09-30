@@ -7,10 +7,12 @@ package game_quest;
 import Controller.EightQueenPuzzleController;
 import static Controller.EightQueenPuzzleController.getPlayerNameDialog;
 import Controller.KnightsTourProblemController;
+import Controller.LCSController;
 import Model.EightQueenPuzzleModel;
 import Model.KnightsTourProblemModel;
+import Model.LCSModel;
 import View.EightQueenPuzzleView;
-import View.KnightsTourProblemUI;
+import View.KnightsTourProblemView;
 import View.TicTacToeView;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -18,6 +20,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import View.IdentifyShortestPathView;
+import View.LCSView;
 import javax.swing.SwingUtilities;
 /**
  *
@@ -148,7 +151,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void lbl_knightTourMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_knightTourMouseClicked
         KnightsTourProblemController controller = new KnightsTourProblemController(8); // Initialize with the desired chessboard size
-        KnightsTourProblemUI view = new KnightsTourProblemUI(controller);
+        KnightsTourProblemView view = new KnightsTourProblemView(controller);
         view.setVisible(true);
         this.setVisible(false);
         controller.getMetrixAnswer();
@@ -189,7 +192,18 @@ public class MainMenu extends javax.swing.JFrame {
              }//GEN-LAST:event_lbl_eightQueenMouseClicked
 
     private void lbl_longestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_longestMouseClicked
-        // TODO add your handling code here:
+           
+            LCSView view = new LCSView();
+            LCSController controller = new LCSController();
+            LCSModel model = new LCSModel(view);
+            
+            view.setVisible(true);
+            view.showPlayer();
+           
+            view.setstring();
+            controller.generateRandomString();
+            controller.generateRandomString();
+            this.setVisible(false);
     }//GEN-LAST:event_lbl_longestMouseClicked
 
     /**
