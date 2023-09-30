@@ -196,19 +196,22 @@ public class TicTacToeView extends javax.swing.JFrame implements ActionListener 
                     }
 
                     if (game.isGameOver()) {
-                        if (game.checkForWin(humanPlayer)) {
+                        if (game.checkForWin(humanPlayer)) {                            
+                            JOptionPane.showMessageDialog(this, "You've won the game.","Congratulations!",JOptionPane.INFORMATION_MESSAGE);
                             // If user WINS answer and player name send to DB
                             game.printBoard(); //if win send this to db
                             String matrixAnswer = game.getMatrixAnswer();
                             System.out.println(matrixAnswer);
                             model.savePlayerResponse(playerName, matrixAnswer);
-                            JOptionPane.showMessageDialog(this, "You've won the game.","Congratulations!",JOptionPane.INFORMATION_MESSAGE);
                         } 
                         else if (game.checkForWin(aiPlayer)) {
-                            String matrixAnswer = game.getMatrixAnswer();
+                            /*Note
+                                a smooth demonstration of all game outcomes, we have saved 
+                                the players' name and correct answer in the database when a player LOST */
+                            /*String matrixAnswer = game.getMatrixAnswer();
                             System.out.println(matrixAnswer);
-                            JOptionPane.showMessageDialog(this, "Better luck next time.","You lost!",JOptionPane.ERROR_MESSAGE);
-                            model.savePlayerResponse(playerName, matrixAnswer);
+                            model.savePlayerResponse(playerName, matrixAnswer);*/
+                            JOptionPane.showMessageDialog(this, "Better luck next time.","You lost!",JOptionPane.ERROR_MESSAGE);                            
                         } 
                         else {
                             JOptionPane.showMessageDialog(this, "It's a Draw, the game is tied.","Try Again!",JOptionPane.WARNING_MESSAGE);
@@ -245,7 +248,8 @@ public class TicTacToeView extends javax.swing.JFrame implements ActionListener 
             JTextField nameField = new JTextField();
             JComponent[] inputs = new JComponent[]{new JLabel("Enter your name:"), nameField};
 
-            JOptionPane optionPane = new JOptionPane(inputs, JOptionPane.QUESTION_MESSAGE, JOptionPane.OK_CANCEL_OPTION, null, new String[]{"Start", "Exit"}, "Start");
+            JOptionPane optionPane = new JOptionPane(inputs, JOptionPane.QUESTION_MESSAGE, JOptionPane.OK_CANCEL_OPTION, 
+                    null, new String[]{"Start", "Exit"}, "Start");
             optionPane.setInitialValue(null); // This line sets the initial focus on the text box
 
             JDialog dialog = optionPane.createDialog("Player Name");
