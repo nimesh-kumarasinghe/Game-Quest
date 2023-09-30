@@ -19,12 +19,14 @@ public class Vertex {
         this.edges = new ArrayList<Edge>();
     }
     
-    public void addEdge(Vertex endVertex,Integer weight){
+    public boolean addEdge(Vertex endVertex,Integer weight){
         this.edges.add(new Edge(this, endVertex, weight));
+        return true;
     }
     
-    public void removeEdge(Vertex endVertex){
+    public boolean removeEdge(Vertex endVertex){
         this.edges.removeIf(edge -> edge.getEnd().equals(endVertex));
+        return true;
     }
     
     public String getData(){
