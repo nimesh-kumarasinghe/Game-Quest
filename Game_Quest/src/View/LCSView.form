@@ -92,6 +92,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btn_check">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f2" green="f2" red="f2" type="rgb"/>
+        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="15" style="1"/>
         </Property>
@@ -99,7 +102,7 @@
           <Color blue="f2" green="f2" red="f2" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/View/images/play.png"/>
+          <Image iconType="3" name="/View/images/check.png"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -119,7 +122,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="370" y="650" width="160" height="60"/>
+          <AbsoluteConstraints x="270" y="630" width="160" height="60"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -215,6 +218,24 @@
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="220" y="280" width="450" height="50"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JButton" name="btn_no_common_value">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/View/images/No-common-Value.png"/>
+        </Property>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_no_common_valueActionPerformed"/>
+      </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="460" y="630" width="170" height="60"/>
         </Constraint>
       </Constraints>
     </Component>

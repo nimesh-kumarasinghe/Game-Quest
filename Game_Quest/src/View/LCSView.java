@@ -51,6 +51,11 @@ public class LCSView extends javax.swing.JFrame {
         btn_check.setOpaque(false);
         btn_check.setContentAreaFilled(false);
         btn_check.setBorderPainted(false);
+        
+        btn_no_common_value.setOpaque(false);                
+        btn_no_common_value.setContentAreaFilled(false);
+        btn_no_common_value.setBorderPainted(false);              
+        
     }
     public void setstring(){
         x = controller.generateRandomString().toUpperCase();
@@ -68,11 +73,10 @@ public class LCSView extends javax.swing.JFrame {
     }
     
     public void showPlayer(){
-        do{ 
-           playerName = JOptionPane.showInputDialog(this,"Enter Player's Name:");
+        do{ playerName = JOptionPane.showInputDialog(this,"Enter Player's Name:");
            if(playerName == null || playerName.isEmpty()){
-                   JOptionPane.showMessageDialog(this,"Player name can't be empty. Please enter a valid name.","Error", JOptionPane.ERROR_MESSAGE);
-    
+                    JOptionPane.showMessageDialog(this, "Player name can't be empty. Please enter a valid name.", "Warning", JOptionPane.WARNING_MESSAGE);
+                   
            }
            else{
                    showMessage("Player Name: "+playerName);
@@ -98,6 +102,7 @@ public class LCSView extends javax.swing.JFrame {
         lbl_home = new javax.swing.JLabel();
         lbl_close = new javax.swing.JLabel();
         lbl_player = new javax.swing.JLabel();
+        btn_no_common_value = new javax.swing.JButton();
         lbl_bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -124,9 +129,10 @@ public class LCSView extends javax.swing.JFrame {
         lbl_string2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(lbl_string2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 410, 259, 45));
 
+        btn_check.setBackground(new java.awt.Color(242, 242, 242));
         btn_check.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         btn_check.setForeground(new java.awt.Color(242, 242, 242));
-        btn_check.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/images/play.png"))); // NOI18N
+        btn_check.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/images/check.png"))); // NOI18N
         btn_check.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         btn_check.setBorderPainted(false);
         btn_check.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -136,7 +142,7 @@ public class LCSView extends javax.swing.JFrame {
                 btn_checkActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_check, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 650, 160, 60));
+        getContentPane().add(btn_check, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 630, 160, 60));
 
         txt_answer.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         txt_answer.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -176,6 +182,15 @@ public class LCSView extends javax.swing.JFrame {
         lbl_player.setPreferredSize(new java.awt.Dimension(200, 34));
         getContentPane().add(lbl_player, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, 450, 50));
 
+        btn_no_common_value.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/images/No-common-Value.png"))); // NOI18N
+        btn_no_common_value.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_no_common_value.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_no_common_valueActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_no_common_value, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 630, 170, 60));
+
         lbl_bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/images/backgroundImg.png"))); // NOI18N
         getContentPane().add(lbl_bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -188,26 +203,33 @@ public class LCSView extends javax.swing.JFrame {
         String correctAnswer  = controller.calculateLCS(x, y);
         
         if(!userAnswer.equals(userAnswer.toUpperCase())){
-            JOptionPane.showMessageDialog(this,"Answer must be in capital letters only.","Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Answer must be in capital letters only.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         
         System.out.println("Correct: "+correctAnswer);
         System.out.println("User: "+userAnswer);
         
-        if(userAnswer.equals(correctAnswer)){
+         if(correctAnswer.isEmpty()){
+            JOptionPane.showMessageDialog(this, "No Longest Common Sequence found.", "Information", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        else if(userAnswer.equals(correctAnswer)){
             showMessage("You win!");
             LCSModel lcsmodel = new LCSModel(this); //Pass the current instance of LCSView
             lcsmodel.savePlayerInfo(userAnswer);
         }
         else{
-            showMessage("You lose. Try again!");
+            JOptionPane.showMessageDialog(this, "You lose. Try again!", "Warning", JOptionPane.WARNING_MESSAGE);
+
         }
         x = controller.generateRandomString();
         y = controller.generateRandomString();
         lbl_string1.setText(x);
         lbl_string2.setText(y);
         txt_answer.setText("");
+        
+
     }//GEN-LAST:event_btn_checkActionPerformed
 
     private void lbl_closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_closeMouseClicked
@@ -231,6 +253,41 @@ public class LCSView extends javax.swing.JFrame {
         menu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_lbl_homeMouseClicked
+
+    private void btn_no_common_valueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_no_common_valueActionPerformed
+        // TODO add your handling code here:
+        String userAnswer  = "";
+        String correctAnswer  = controller.calculateLCS(x, y);
+        
+        if(!userAnswer.equals(userAnswer.toUpperCase())){
+            JOptionPane.showMessageDialog(this, "Answer must be in capital letters only.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        System.out.println("Correct: "+correctAnswer);
+        System.out.println("User: "+userAnswer);
+        
+        if(correctAnswer.isEmpty()){
+            btn_check.setEnabled(false); // Disable the Check button
+            showMessage("You win");
+        }
+        
+//        else if(userAnswer.equals(correctAnswer)){
+//            showMessage("You win!");
+//            LCSModel lcsmodel = new LCSModel(this); //Pass the current instance of LCSView
+//            lcsmodel.savePlayerInfo(userAnswer);
+//        }
+        else{
+            JOptionPane.showMessageDialog(this, "You lose. Try again!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        x = controller.generateRandomString();
+        y = controller.generateRandomString();
+        lbl_string1.setText(x);
+        lbl_string2.setText(y);
+        txt_answer.setText("");
+        //btn_no_common_value.setText("");
+        btn_check.setEnabled(true); 
+    }//GEN-LAST:event_btn_no_common_valueActionPerformed
 
     /**
      * @param args the command line arguments
@@ -269,6 +326,7 @@ public class LCSView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_check;
+    private javax.swing.JButton btn_no_common_value;
     private javax.swing.JLabel lbl_bg;
     private javax.swing.JLabel lbl_close;
     private javax.swing.JLabel lbl_home;
