@@ -32,6 +32,7 @@ public class Graph {
     public void removeEdge(Vertex vertex1,Vertex vertex2){
         vertex1.removeEdge(vertex2);
         vertex2.removeEdge(vertex1);
+        
     }
     
     public void removeVertex(Vertex vertex){
